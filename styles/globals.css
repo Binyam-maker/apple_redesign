@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #36454f;
+}
+
+@layer components {
+  .headerIcon {
+    @apply h-6 w-6 cursor-pointer transition hover:opacity-80;
+  }
+}
