@@ -29,7 +29,7 @@ const Header: () => JSX.Element= () => {
 
             {/* Links container */}
             <ul className='hidden justify-center flex-1 space-x-8 md:flex md:visible gap-4 '>
-                {links.map((item) => <Link href={item.link}>{item.name}</Link>)}
+                {links.map((item) => <Link key={item.name} href={item.link}>{item.name}</Link>)}
             </ul>
 
             {/* Icons container */}

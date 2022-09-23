@@ -14,4 +14,7 @@ body {
   .headerIcon {
     @apply h-6 w-6 cursor-pointer transition hover:opacity-80;
   }
+  .underlineItem {
+    @apply relative  before:absolute before:inset-x-0 before:-bottom-1 before:h-0.5 before:origin-left before:scale-x-0 before:transform before:rounded-bl before:bg-black before:transition-all before:duration-200 hover:before:scale-x-100;
+  }
 }
