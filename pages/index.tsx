@@ -1,14 +1,18 @@
 import { Tab } from '@headlessui/react'
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps, NextPage, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import Header from '../components/Header'
 import Landing from '../components/Landing'
 import loadCategories from '../libs/loadCategories'
 
-const Home: NextPage = () => {
+interface Props {
+  categories: Category[]
+}
 
-  let categories: {id: string, title: string}[]=[]
+const Home = ({categories}:  InferGetStaticPropsType<typeof getStaticProps>) => {
+
+  // let categories: {id: string, title: string}[]=[]
   return (
     <div className="">
       <Head>
@@ -32,9 +36,9 @@ const Home: NextPage = () => {
           <Tab.List>
             {categories.map((category) => {
               return <Tab
-              key={category.id}
-              id={category.id}
-              className={({selected}) => `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
+              key={category._id}
+              id={category._id}
+              className={({selected}) => ` rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                 selected ? 'borderGradient bg-[#35383C] text-white' : 'border-b-2 border-[#35383C] text-[#47474]'
               }`}>
                 {category.title}
@@ -64,12 +68,15 @@ const Home: NextPage = () => {
 export default Home
 
 
-  export const getStaticProps: GetStaticProps = async() => {
+// Server Side
+  export const getStaticProps: GetStaticProps<Props> = async() => {
 
-  const categories  = await loadCategories()
 
+  const categories= await loadCategories()
 
   return {
-    props: {categories}
+    props:{
+      categories: categories
+    }
   }
 }

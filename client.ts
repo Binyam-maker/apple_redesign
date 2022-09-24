@@ -5,6 +5,7 @@ export const config = {
     token:process.env.SANITY_API_TOKENS,
     projectId: process.env.SANITY_PROJECT_ID!,
     dataset: 'production',
+    apiVersion: '2021-08-31',
     useCdn:true,
     
 }
